@@ -9,6 +9,8 @@ isadmin:string,
 const InitialValue={
   user:undefined,
   setuser:()=>{},
+  sidebartext:"Courses",
+setsidebartext:()=>{},  
 }
 export let CounterContext=createContext<counterContextType>(InitialValue)
  interface counterContextType {
@@ -17,6 +19,9 @@ export let CounterContext=createContext<counterContextType>(InitialValue)
   // count:number
 user:User|undefined,
 setuser:React.Dispatch<React.SetStateAction<User|undefined>>,
+sidebartext:string|undefined,
+setsidebartext:React.Dispatch<React.SetStateAction<string>>
+
   
 
 }

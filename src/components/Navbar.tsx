@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { CounterContext } from "../context/counterContext";
 import { localUser } from "../utils/Dotenv";
-import { User, LogOut, Pencil } from "lucide-react";
+import {  LogOut, Pencil } from "lucide-react";
 import student from "../assets/student.png"
 import { useRef } from "react";
 const links = [
@@ -196,7 +196,7 @@ const profileRef = useRef<HTMLDivElement>(null);
         >
           {/* Header */}
 
-          <div className="relative bg-gradient-to-r from-violet-600 to-purple-600 p-6">
+          <div className="relative bg-linear-to-r from-violet-600 to-purple-600 p-6">
 
             <button
               onClick={() =>

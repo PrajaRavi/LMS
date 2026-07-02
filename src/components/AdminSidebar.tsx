@@ -1,17 +1,15 @@
 // components/Sidebar.tsx
 
 import {
-  LayoutDashboard,
   BookOpen,
-  List,
   Video,
   Users,
   FileText,
   BarChart3,
   Settings,
 } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { SetSideBarText } from "../Redux/Slice/Auth.slice";
+import { useContext } from "react";
+import { CounterContext } from "../context/counterContext";
 
 const items = [
   // { icon: LayoutDashboard, label: "Dashboard" },
@@ -25,8 +23,7 @@ const items = [
 ];
 
 export default function Sidebar() {
-  const dispatch=useDispatch();
-  const SideBarText=useSelector((state:any)=>state.Auth.SideBarText)
+  const {sidebartext,setsidebartext}=useContext(CounterContext)
   return (
     <aside className="w-64 bg-[#111827] text-white h-screen">
       <div className="border-b border-white/10 p-5">
@@ -40,12 +37,12 @@ export default function Sidebar() {
           return (
             <button
             onClick={()=>{
-              dispatch(SetSideBarText(item.label))
+              setsidebartext(item.label)
             }}
               key={item.label}
               className={`mb-2 flex w-full items-center gap-3 rounded-lg px-4 py-3 transition
               ${
-                SideBarText==item.label
+                sidebartext==item.label
                   ? "bg-violet-600"
                   : "hover:bg-white/10"
               }`}

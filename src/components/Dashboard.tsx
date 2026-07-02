@@ -1,16 +1,16 @@
 // pages/AdminDashboard.tsx
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 
 import Sidebar from "./AdminSidebar";
 import PlaylistPanel from "./PlaylistPanal";
 import VideoTable from "./VideoTable";
 import DeleteModal from "./DeleteConfirmModal";
-import { useSelector } from "react-redux";
 import CoursesPage from "./Courses";
 import VideosModule from "./Videos";
 import StudentsModule from "./Students";
+import { CounterContext } from "../context/counterContext";
 
 const initialVideos = [
   {
@@ -34,8 +34,7 @@ const initialVideos = [
 export default function AdminDashboard() {
   const [videos, setVideos] =
     useState(initialVideos);
-  const SideBarText=useSelector((state:any)=>state.Auth.SideBarText)
-
+  const {sidebartext}=useContext(CounterContext)
   const [selected, setSelected] =
     useState<any>(null);
 
@@ -73,7 +72,7 @@ export default function AdminDashboard() {
   };
 
   const MainDiv=()=>{
-    if(SideBarText=="Dashboard"){
+    if(sidebartext=="Dashboard"){
       return (
         <main className="flex-1 p-6  h-screen overflow-y-scroll border-red-700">
             <motion.div
@@ -118,13 +117,13 @@ export default function AdminDashboard() {
           </main>
       )
     }
-    else if(SideBarText=="Courses"){
+    else if(sidebartext=="Courses"){
       return(<CoursesPage/>)
     }
-    else if(SideBarText=="Students"){
+    else if(sidebartext=="Students"){
       return(<StudentsModule/>)
     }
-    else if(SideBarText=="Videos"){
+    else if(sidebartext=="Videos"){
       return(<VideosModule/>)
     }
     else{

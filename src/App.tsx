@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react"
 import LandingPage from "./components/LandingPage(1)";
 import { BrowserRouter, Routes,Route } from "react-router";
@@ -8,31 +7,29 @@ import Signin from "./pages/Signin";
 import Courses from "./pages/Courses";
 import { CounterContext, type User } from "./context/counterContext";
 import { supabase } from "./utils/supabase";
-import { localUser } from "./utils/Dotenv";
+import { localUser, SideBarText } from "./utils/Dotenv";
 import { toast } from "react-toastify";
 import Contact from "./pages/Contact";
-const id="UMGsyUj-lsc"
-// const id="PLRAV69dS1uWRH0QDzQaKLQEYD26YCQ5eS"
-const YOUTUBE_API_KEY="AIzaSyCfjQDjAw3CBaykfIJP6nEKmQ8ZMKw5QnE" 
+import AdminDashboard from "./components/Dashboard";
+// const id="UMGsyUj-lsc"
+// const YOUTUBE_API_KEY="AIzaSyCfjQDjAw3CBaykfIJP6nEKmQ8ZMKw5QnE" 
 function App() {
 let [user,setuser]=useState<User>()
-  async function GetYTData(){
-try {
-  let {data}=await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${id}&key=${YOUTUBE_API_KEY}`)
-  console.log(data)
-} catch (error) {
-  console.log(error)
-}
-  }
+let [sidebartext,setsidebartext]=useState("Courses")
+  
+  
+  /**
+   * 
   async function GetPlaylist(){
-try {
+    try {
   let {data}=await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${id}&maxResults=50&key=${YOUTUBE_API_KEY}`)
   console.log(data)
 } catch (error) {
   console.log(error)
 }
 
-  }
+}
+*/
   async function GetUser(){
     try {
       let {data,error}:{data:any,error:any}=await supabase.from("users").select("*")
@@ -62,12 +59,17 @@ try {
 
       GetUser();
     }
-GetYTData();
+// GetYTData();
+  },[])
+  useEffect(()=>{
+if(!localStorage.getItem(SideBarText)){
+localStorage.setItem(SideBarText,"Courses")
+}
   },[])
   return (
     <>
 <BrowserRouter>
-<CounterContext.Provider value={{user,setuser}}>
+<CounterContext.Provider value={{user,setuser,sidebartext,setsidebartext}}>
 
 <Navbar/>
 <Routes>
@@ -77,6 +79,7 @@ GetYTData();
 <Route path="/signin/:email" element={<Signin/>}></Route>
 <Route path="/course" element={<Courses/>}></Route>
 <Route path="/contact" element={<Contact/>}></Route>
+<Route path="/admin" element={<AdminDashboard/>}></Route>
 </Routes>
 </CounterContext.Provider>
 </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Search,
   Pencil,
@@ -95,7 +95,7 @@ export default function VideosModule() {
   const [courseFilter, setCourseFilter] =
     useState("all");
 
-  const [playlistFilter, setPlaylistFilter] =
+  const [playlistFilter, _] =
     useState("all");
 
   const [page, setPage] = useState(1);
@@ -113,26 +113,26 @@ export default function VideosModule() {
     [videos]
   );
 
-  const playlists = useMemo(() => {
-    if (courseFilter === "all") {
-      return Array.from(
-        new Set(
-          videos.map((v) => v.playlist)
-        )
-      );
-    }
+  // const playlists = useMemo(() => {
+  //   if (courseFilter === "all") {
+  //     return Array.from(
+  //       new Set(
+  //         videos.map((v) => v.playlist)
+  //       )
+  //     );
+  //   }
 
-    return Array.from(
-      new Set(
-        videos
-          .filter(
-            (v) =>
-              v.course === courseFilter
-          )
-          .map((v) => v.playlist)
-      )
-    );
-  }, [videos, courseFilter]);
+  //   return Array.from(
+  //     new Set(
+  //       videos
+  //         .filter(
+  //           (v) =>
+  //             v.course === courseFilter
+  //         )
+  //         .map((v) => v.playlist)
+  //     )
+  //   );
+  // }, [videos, courseFilter]);
 
   const filteredVideos = useMemo(() => {
     return videos.filter((video) => {
@@ -283,7 +283,7 @@ export default function VideosModule() {
 
         <div className="overflow-hidden rounded-2xl border bg-white">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1100px]">
+            <table className="w-full min-w-275">
               <thead>
                 <tr className="border-b bg-gray-50">
                   <th className="p-4 text-left">

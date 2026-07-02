@@ -229,7 +229,7 @@ import {
   PlaySquare,
   BookOpen,
   Users,
-  ListVideo,
+  
 } from "lucide-react";
 
 
@@ -361,7 +361,7 @@ export default function CoursesPage() {
 
           <div className="overflow-hidden rounded-3xl border bg-white">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[900px]">
+              <table className="w-full min-w-22">
                 <thead>
                   <tr className="border-b bg-gray-50">
                     <th className="p-4 text-left">

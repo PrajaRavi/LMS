@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import  { useMemo, useState } from "react";
 import {
   Search,
   Plus,
@@ -8,8 +8,7 @@ import {
   AlertTriangle,
   Users,
   GraduationCap,
-  BookOpen,
-  TrendingUp,
+  
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -317,7 +316,7 @@ export default function StudentsModule() {
 
         <div className="overflow-hidden rounded-2xl border bg-white">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1000px]">
+            <table className="w-full min-w-250">
               <thead>
                 <tr className="border-b bg-gray-50">
                   <th className="p-4 text-left">

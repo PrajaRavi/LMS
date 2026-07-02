@@ -1,4 +1,4 @@
-import React from "react";
+
 import studentIcon from "../assets/student.png"
 import { Link } from "react-router";
 import { localUser } from "../utils/Dotenv";
@@ -8,7 +8,7 @@ export default function LandingPage() {
     <div className="min-h-screen  bg-white text-slate-900">
      
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-white to-violet-100"/>
+        <div className="absolute inset-0 bg-linear-to-br from-violet-50 via-white to-violet-100"/>
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2 items-center">
           <div>
             <p className="mb-3 text-sm font-semibold tracking-widest text-violet-600">LEARN. TEACH. GROW.</p>
@@ -76,7 +76,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-violet-700 to-violet-500 text-white">
+      <footer className="bg-linear-to-r from-violet-700 to-violet-500 text-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 py-12 md:grid-cols-4">
           <div>
             <h3 className="text-2xl font-bold">ClassLMS</h3>
