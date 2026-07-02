@@ -254,8 +254,8 @@ if(data[0].password==form.password){
                 >
 
                   {loading
-                    ? "Creating..."
-                    : "Create Account"}
+                    ? "logging..."
+                    : "Sign In"}
 
                   {!loading && (
                     <ArrowRight size={18} />
