@@ -160,12 +160,12 @@ const profileRef = useRef<HTMLDivElement>(null);
       onClick={() =>
         setProfileOpen(!profileOpen)
       }
-      className="relative ml-20 lg:ml-0"
+      className="relative w-11 h-11 ml-20 lg:ml-0"
     >
       <img
         src={student}
         alt=""
-        className="h-11 w-11 rounded-full border-2 border-violet-500 object-cover"
+        className="h-11 w-11 rounded-full border-2 border-violet-500 md:object-cover"
       />
 
       {/* <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-green-500" /> */}
@@ -321,7 +321,7 @@ const profileRef = useRef<HTMLDivElement>(null);
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 h-[90vh]  z-40 bg-black/40 backdrop-blur-sm"
             />
 
             <motion.div
@@ -332,7 +332,7 @@ const profileRef = useRef<HTMLDivElement>(null);
                 type: "spring",
                 damping: 22,
               }}
-              className="fixed right-0 top-0 z-50 flex h-screen w-75 flex-col bg-white p-8 shadow-2xl"
+              className="fixed right-0 top-0 z-50 flex h-[90vh] w-75 flex-col bg-white p-8 shadow-2xl"
             >
               <div className="mb-10 flex items-center justify-between">
                 <h2 className="text-2xl font-bold">
