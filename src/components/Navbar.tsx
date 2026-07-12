@@ -260,6 +260,7 @@ const profileRef = useRef<HTMLDivElement>(null);
             </button>
 
             <button
+            data-testid="logoutBtn"
             onClick={()=>{
            localStorage.removeItem(localUser);
            setuser(undefined)

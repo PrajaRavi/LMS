@@ -66,6 +66,14 @@ if(!localStorage.getItem(SideBarText)){
 localStorage.setItem(SideBarText,"Courses")
 }
   },[])
+
+  async function SignInSubmitHandler(){
+    try {
+      console.log("hello i am ravi prajapati")
+    } catch (error) {
+      
+    }
+  }
   return (
     <>
 <BrowserRouter>
@@ -76,7 +84,7 @@ localStorage.setItem(SideBarText,"Courses")
 
 <Route path="/" element={<LandingPage/>}></Route>
 <Route path="/signup" element={<Signup/>}></Route>
-<Route path="/signin/:email" element={<Signin/>}></Route>
+<Route path="/signin/:email" element={<Signin SubmitHandler={SignInSubmitHandler}/>}></Route>
 <Route path="/course" element={<Courses/>}></Route>
 <Route path="/contact" element={<Contact/>}></Route>
 <Route path="/admin" element={<AdminDashboard/>}></Route>

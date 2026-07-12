@@ -12,7 +12,7 @@ import { supabase } from "../utils/supabase";
 import { toast } from "react-toastify";
 import { localUser } from "../utils/Dotenv";
 
-export default function Signin() {
+export default function Signin({SubmitHandler}:{SubmitHandler:()=>{}}) {
   const [showPassword, setShowPassword] = useState(false);
 const {email}=useParams();
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,8 @@ const navigate=useNavigate();
     e: React.FormEvent
   ) => {
     e.preventDefault();
-
+    
+SubmitHandler();
     setLoading(true);
 
     try {
@@ -110,11 +111,7 @@ if(data[0].password==form.password){
 
             <div className="relative flex w-full flex-col items-center justify-center p-12">
 
-              <img
-                src="/student.png"
-                alt=""
-                className="w-107.5 drop-shadow-2xl"
-              />
+              
 
               <h2 className="mt-8 text-center text-4xl font-bold text-white">
 
@@ -122,7 +119,7 @@ if(data[0].password==form.password){
 
               </h2>
 
-              <p className="mt-4 max-w-md text-center text-violet-100">
+              <p id="para" className="mt-4 max-w-md text-center text-violet-100">
 
                 login to your account and start your
                 learning journey with interactive
@@ -149,7 +146,7 @@ if(data[0].password==form.password){
 
                 
 
-                <p className="mt-2 text-gray-500">
+                <p id="learning" className="mt-2 text-gray-500">
 
                   Start learning today.
 
@@ -167,11 +164,7 @@ if(data[0].password==form.password){
 
                 <div>
 
-                  <label className="mb-2 block text-sm font-medium">
-
-                    Email
-
-                  </label>
+                  <label id="emailLabel" className="mb-2 block text-sm font-medium">Email</label>
 
                   <div className="relative">
 
@@ -183,6 +176,8 @@ if(data[0].password==form.password){
                     <input
                       type="email"
                       name="email"
+                      aria-label="email"
+                      required
                       value={form.email}
                       onChange={handleChange}
                       placeholder="john@gmail.com"
@@ -198,7 +193,7 @@ if(data[0].password==form.password){
 
                 <div>
 
-                  <label className="mb-2 block text-sm font-medium">
+                  <label id="passlabel" className="mb-2 block text-sm font-medium">
 
                     Password
 
@@ -212,12 +207,16 @@ if(data[0].password==form.password){
                     />
 
                     <input
+                    data-testid="passInput"
+                    required
                       type={
                         showPassword
                           ? "text"
                           : "password"
                       }
                       name="password"
+                      id="pass"
+                      aria-label="password"
                       value={form.password}
                       onChange={handleChange}
                       placeholder="********"
@@ -248,7 +247,9 @@ if(data[0].password==form.password){
 
                 <motion.button
                   whileTap={{ scale: .95 }}
+                  type="submit"
                   whileHover={{ scale: 1.02 }}
+                  data-testid="submit"
                   disabled={loading}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#7F22FE] py-3 font-semibold text-white shadow-lg transition hover:bg-violet-700"
                 >
@@ -265,16 +266,9 @@ if(data[0].password==form.password){
 
               </form>
 
-              <p className="mt-8 text-center text-gray-500">
 
-                Don't  have an account?
-
-                <Link to={"/signup"} className="ml-2 cursor-pointer font-semibold text-[#7F22FE]">
-
-                  Sign Up
-
-                </Link>
-
+              <p data-testid="parent-para" className="mt-8 text-center text-gray-500">
+                Don't have an account?<Link to={"/signup"} className="ml-2 cursor-pointer font-semibold text-[#7F22FE]">Sign Up</Link>
               </p>
 
             </div>
