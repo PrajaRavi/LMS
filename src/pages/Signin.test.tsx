@@ -23,6 +23,11 @@ describe("signinpage", () => {
     expect(screen.getByTestId("parent-para")).toHaveTextContent(
       "Don't have an account?Sign Up",
     );
+    expect(screen.getByTestId("parent-para")).toBeInTheDocument();
+    expect(screen.getByRole("heading",{name:/Welcome to ClassLMS/i})).toBeInTheDocument();
+    expect(container.querySelector("#mail")).toBeInTheDocument();
+    expect(container.querySelector("#lock")).toBeInTheDocument();
+    expect(screen.getByRole("heading",{name:/Welcome to ClassLMS/i})).toHaveTextContent("Welcome to ClassLMS");
 
     expect(
       screen.getByRole("heading", {
@@ -31,6 +36,9 @@ describe("signinpage", () => {
     ).toBeInTheDocument();
 
     expect(container.querySelector("#para")).toBeInTheDocument();
+    expect(container.querySelector("#para")).toHaveTextContent(
+      "login to your account and start your learning journey with interactive courses and engaging content.",
+    );
 
     expect(container.querySelector("#learning")).toBeInTheDocument();
 
@@ -46,9 +54,6 @@ describe("signinpage", () => {
 
     expect(container.querySelector("#passlabel")).toHaveTextContent("Password");
 
-    expect(container.querySelector("#para")).toHaveTextContent(
-      "login to your account and start your learning journey with interactive courses and engaging content.",
-    );
   });
 });
 

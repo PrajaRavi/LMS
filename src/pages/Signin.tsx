@@ -169,6 +169,7 @@ if(data[0].password==form.password){
                   <div className="relative">
 
                     <Mail
+                    id="mail"
                       size={18}
                       className="absolute left-4 top-4 text-gray-400"
                     />
@@ -201,7 +202,8 @@ if(data[0].password==form.password){
 
                   <div className="relative">
 
-                    <Lock
+                    <Lock 
+                    id="lock"
                       size={18}
                       className="absolute left-4 top-4 text-gray-400"
                     />
@@ -249,6 +251,7 @@ if(data[0].password==form.password){
                   whileTap={{ scale: .95 }}
                   type="submit"
                   whileHover={{ scale: 1.02 }}
+                  aria-label="submitbtn"
                   data-testid="submit"
                   disabled={loading}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#7F22FE] py-3 font-semibold text-white shadow-lg transition hover:bg-violet-700"
