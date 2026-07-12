@@ -157,6 +157,7 @@ const profileRef = useRef<HTMLDivElement>(null);
     ref={profileRef}
   >
     {localStorage.getItem(localUser)&&<button
+    data-testid="ProfileBtn"
       onClick={() =>
         setProfileOpen(!profileOpen)
       }
